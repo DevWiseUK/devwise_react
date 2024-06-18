@@ -65,8 +65,5 @@
       "npm run lint",
       "npm run test"
     ]
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@DevWiseUK"
   }
 }
