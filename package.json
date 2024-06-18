@@ -1,6 +1,7 @@
 {
   "name": "@devwiseuk/devwise_react",
   "version": "1.0.1",
+  "private": "false",
   "description": "",
   "type": "module",
   "main": "dist/index.cjs.js",
