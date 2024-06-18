@@ -12,6 +12,9 @@
   "scripts": {
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "typescript": "tsc --noEmit",
+    "prettier": "prettier --check \"src/**/*.{ts,tsx,json,js,jsx,scss}\" && prettier \".storybook/*.ts\"",
+    "eslint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "build": "tsc && vite build",
     "prepare": "npm run build",
     "test": "vitest run",

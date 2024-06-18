@@ -1,0 +1,42 @@
+name: CI
+
+on: push
+
+jobs:
+  test-lint-build:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+
+      - name: Tests
+        run: npm run test
+
+      - name: Typescript
+        run: npm run typescript
+
+      - name: Prettier
+        run: npm run prettier
+
+      - name: Eslint
+        run: npm run eslint
+
+      - name: Build
+        run: npm run build
